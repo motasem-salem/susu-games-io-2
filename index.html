@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sara's Super Mega Amazing Game Universe!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    body {
+      font-family: "Chalkboard SE", "Comic Sans MS", "Arial Rounded MT Bold", sans-serif;
+      background: linear-gradient(135deg, #ffd6eb 0%, #f3d9ff 50%, #fff3b0 100%);
+      color: #4a154b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 32px;
+    }
+
+    .sparkle {
+      position: absolute;
+      animation: floaty 4s ease-in-out infinite;
+    }
+
+    .sparkle:nth-child(1) { top: 8%; left: 8%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 15%; right: 10%; animation-delay: 1s; }
+    .sparkle:nth-child(3) { bottom: 12%; left: 7%; animation-delay: 2s; }
+    .sparkle:nth-child(4) { bottom: 18%; right: 8%; animation-delay: 1.5s; }
+    .sparkle:nth-child(5) { top: 48%; left: 4%; animation-delay: 0.7s; }
+    .sparkle:nth-child(6) { top: 44%; right: 5%; animation-delay: 2.3s; }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(12deg); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      max-width: 720px;
+      text-align: center;
+      background-color: #ffffff;
+      border: 5px dashed #ff3b9a;
+      border-radius: 36px;
+      padding: 32px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 12px 0 rgba(255, 59, 154, 0.25);
+    }
+
+    .crown-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff3b9a, #9d4edd);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      font-size: 38px;
+      font-weight: bold;
+      line-height: 1.2;
+      color: #ff3b9a;
+      text-shadow: 3px 3px 0px #ffe066;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 19px;
+      color: #6a2c70;
+      line-height: 1.5;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 28px;
+      width: 100%;
+    }
+
+    .game-card {
+      background-color: #ffffff;
+      border: 5px solid #ff77bc;
+      border-radius: 32px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      box-shadow: 0 12px 0 #ff9ecd;
+      transition: transform 0.2s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .game-icon {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    .game-meta {
+      display: inline-block;
+      margin: 0 auto 14px auto;
+      font-size: 14px;
+      font-weight: bold;
+      color: #4a154b;
+      background-color: #ffd166;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 2px solid #f4a261;
+    }
+
+    .game-title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #9d4edd;
+      margin-bottom: 10px;
+    }
+
+    .game-desc {
+      color: #6a2c70;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .play-btn {
+      display: inline-block;
+      background: linear-gradient(180deg, #ff5ca8 0%, #ff2a85 100%);
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 15px 24px;
+      border-radius: 999px;
+      border: 3px solid #ffffff;
+      box-shadow: 0 6px 0 #b51763;
+    }
+
+    .play-btn:hover {
+      filter: brightness(1.06);
+    }
+
+    .game-card.coming-soon {
+      background-color: #fff9fc;
+      border: 5px dashed #c77dff;
+      box-shadow: 0 10px 0 #e0aaff;
+    }
+
+    .coming-soon .play-btn {
+      background: #e0aaff;
+      color: #5a189a;
+      box-shadow: 0 5px 0 #c77dff;
+      cursor: default;
+    }
+
+    footer {
+      margin-top: 44px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #7b2cbf;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 12px 24px;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sparkles" aria-hidden="true">
+    <span class="sparkle">🦄</span>
+    <span class="sparkle">🌈</span>
+    <span class="sparkle">💖</span>
+    <span class="sparkle">✨</span>
+    <span class="sparkle">🍭</span>
+    <span class="sparkle">👑</span>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="crown-badge">👑 OFFICIAL VIP GAME ZONE 👑</div>
+      <h1>✨ Sara's Amazing Set of Games! ✨</h1>
+      <p>
+        Officially the <strong>BEST games in the entire universe</strong> (and outer space too 🚀)! 
+        Pick a game below and get ready for maximum giggles!
+      </p>
+    </header>
+
+    <main class="games-grid">
+      <article class="game-card">
+        <div>
+          <div class="game-icon">🦄🃏</div>
+          <div class="game-meta">👯‍♀️ 2 Players • Super Fun!</div>
+          <h2 class="game-title">DuoMatch</h2>
+          <p class="game-desc">
+            Can you beat your opponent's mega-brain?! Flip the cards, find the matching pairs, and become the Ultimate Memory Champion!
+          </p>
+        </div>
+        <a href="duomatch.html" class="play-btn">💖 Play DuoMatch! 💖</a>
+      </article>
+
+      <article class="game-card coming-soon">
+        <div>
+          <div class="game-icon">🎁✨</div>
+          <div class="game-meta">🚧 Top Secret Magic</div>
+          <h2 class="game-title">Mystery Game #2</h2>
+          <p class="game-desc">
+            Unicorns and glitter fairies are busy building Sara's next super-secret game. Check back soon!
+          </p>
+        </div>
+        <span class="play-btn">🧁 Baking Soon...</span>
+      </article>
+    </main>
+
+    <footer>
+      🌟 Made by the awesome Sara Susu to play with her awsome friends! 🌟
+    </footer>
+  </div>
+
+</body>
+</html>
